@@ -28,7 +28,7 @@ def filter_words(words: pd.DataFrame, substring: str, search_type: str) -> pd.Da
         raise ValueError("Invalid search_type. Choose from 'begins', 'ends', or 'contains'.")
 
 # Streamlit UI
-st.title("Irish Words Search")
+st.title("Irish Word Search")
 
 # Load data from CSV
 words_df = load_data('teanglann_words.csv')
