@@ -29,8 +29,11 @@ def get_text(key, language):
             "en": """This is an app to search for Irish words by any substring.
             To use, type any part of a word you would like results for and then select if you would
             like results to "begin with", "contain", or "end with" those letters
+            
             Please note: partial matches with and without Síneadh Fadaí are included in results. 
+            
             Developement: Mykalin Jones
+            
             Translation and concept: Ellen Corbett.""",
             "ga": "Place holder."
         },
