@@ -2,12 +2,12 @@ import pandas as pd
 import streamlit as st
 import unicodedata
 
-# Normalize function to remove accents
+# Normalize function to remove accents and convert to lowercase
 def normalize_string(input_str: str) -> str:
     return ''.join(
         char for char in unicodedata.normalize('NFD', input_str)
         if unicodedata.category(char) != 'Mn'
-    )
+    ).lower()
 
 @st.cache_data
 def load_data(filename: str) -> pd.DataFrame:
