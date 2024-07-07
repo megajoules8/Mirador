@@ -19,7 +19,7 @@ def load_data(filename: str) -> pd.DataFrame:
 # Function to switch language
 def get_text(key, language):
     texts = {
-        "title": {"en": "Irish Words Search", "ga": "Place holder"},
+        "title": {"en": "Irish Word Search", "ga": "Place holder"},
         "enter_substring": {"en": "Enter substring to search for:", "ga": "Place holder:"},
         "search_type": {"en": "Search type:", "ga": "Place holder:"},
         "search": {"en": "Search", "ga": "Cuardach"},
