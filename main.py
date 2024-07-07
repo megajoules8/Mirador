@@ -69,7 +69,7 @@ def get_text(key, language):
 
 
 # Language selection with Irish as default
-language = st.selectbox("Select Language / place holder:", ['ga', 'en'], index=0)
+language = st.selectbox("Place Holder / Select Language:", ['ga', 'en'], index=0)
 
 # App title
 st.title(get_text("title", language))
