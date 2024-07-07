@@ -35,36 +35,36 @@ def get_text(key, language):
 
 # Streamlit UI
 
-# Add a logo to the upper left corner
-logo = "logo_place_holder.png"  # Update with the path to your logo
-st.markdown(f"""
-    <style>
-    .logo {{
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 10px;
-    }}
-    .footer {{
-        text-align: center;
-        padding: 10px 0;
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        background-color: #f1f1f1;
-    }}
-    .title {{
-        text-align: center;
-        margin-bottom: 20px;
-    }}
-    </style>
-    <div class="logo">
-        <img src="{logo}" width="100" />
-    </div>
-    <div class="title">
-        <h1>{get_text("title", language)}</h1>
-    </div>
-""", unsafe_allow_html=True)
+# # Add a logo to the upper left corner
+# logo = "logo_place_holder.png"  # Update with the path to your logo
+# st.markdown(f"""
+#     <style>
+#     .logo {{
+#         position: absolute;
+#         top: 0;
+#         left: 0;
+#         padding: 10px;
+#     }}
+#     .footer {{
+#         text-align: center;
+#         padding: 10px 0;
+#         position: relative;
+#         bottom: 0;
+#         width: 100%;
+#         background-color: #f1f1f1;
+#     }}
+#     .title {{
+#         text-align: center;
+#         margin-bottom: 20px;
+#     }}
+#     </style>
+#     <div class="logo">
+#         <img src="{logo}" width="100" />
+#     </div>
+#     <div class="title">
+#         <h1>{get_text("title", language)}</h1>
+#     </div>
+# """, unsafe_allow_html=True)
 
 
 
