@@ -26,7 +26,7 @@ def get_text(key, language):
         "no_results": {"en": "No results found.", "ga": "Place holder."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Place holder."},
         "footer": {
-            "en": "This is an app to search for Irish words by any substring. To use, type any part of a word you would like results for and then select if you would like results to \"begin with\", \"contain\", or \"end with\" those letters Note: partial matches with and without Síneadh Fadaí are included in results.Developement: Mykalin Jones Translation and concept: Ellen Corbett.",
+            "en": "This is an app to search for Irish words by any substring. \nTo use, type any part of a word you would like results for and then \nselect if you would like results to \"begin with\", \"contain\", or \"end with\" those letters \nNote: partial matches with and without Síneadh Fadaí are included in results.\nDevelopement: Mykalin Jones \nTranslation and concept: Ellen Corbett.",
             "ga": "Place holder."
         },
         "spinner": {"en": "Running...", "ga": "Ag rith..."}
