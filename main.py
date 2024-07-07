@@ -29,7 +29,7 @@ def get_text(key, language):
             "en": """This is an app to search for Irish words by any substring. 
             \nTo use, type any part of a word you would like results for and then select if
             \nyou would like results to \"begin with\", \"contain\", or \"end with\" those letters 
-            \nNote: partial matches with and without Síneadh Fadaí are included in results.
+            \nNote: partial matches with and without síntí fada are included in results.
             \nDevelopement: Mykalin Jones 
             \nTranslation and concept: Ellen Corbett.""",
             "ga": "Place holder."
