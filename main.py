@@ -42,8 +42,8 @@ Translation and concept: Ellen Corbett.""",
 logo = "logo_place_holder.png"  # Update with the path to your logo
 st.image(logo, width=100)
 
-# Language selection with Irish as default
-language = st.selectbox("Place Holder / Select Language:", ['ga', 'en'], index=0)
+# Language selection in sidebar with Irish as default
+language = st.sidebar.selectbox("Place Holder / Select Language:", ['ga', 'en'], index=0)
 
 # App title
 st.title(get_text("title", language))
