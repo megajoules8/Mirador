@@ -69,7 +69,7 @@ def search_words(data, substring, search_type):
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
-    df['Word'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Word"]}</a>', axis=1)
+    df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
 # Perform search
