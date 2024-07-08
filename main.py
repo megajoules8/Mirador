@@ -30,8 +30,7 @@ def get_text(key, language):
         "no_results": {"en": "No results found.", "ga": "Place holder."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Place holder."},
         "footer": {
-            "en": """
-            Type any part of a word you would like results for and then select if
+            "en": """Type any part of a word you would like results for and then select if
             you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: partial matches with and without síntí fada are included in results.<br><br>
             <b>Creators</b><br>
@@ -45,8 +44,7 @@ def get_text(key, language):
             Morphemes can denote declension, gender, case, and number. However, the ability to search for specific morphemes is not currently available through other online resources, despite its usefulness.
             Taking inspiration from the Spanish mirador, we hope that this resource will provide a new vantage point from which to view Irish mír. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.
             """,
-            "ga": """<b>App Information</b><br>
-            Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
+            "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
             NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
