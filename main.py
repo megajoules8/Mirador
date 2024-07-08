@@ -36,13 +36,13 @@ def get_text(key, language):
             <b>Creators</b><br>
             <u>Mykalin Jones</u>: Development<br>
             <u>Ellen Corbett</u>: Translation and Concept<br><br>
-            <b>About Us</b><br>
-            Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br><br>
-            Ellen Corbett (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             <b>Míreadóir</b><br>
             Míreadóir [Mir-a-door] enables users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes.
             Morphemes can denote declension, gender, case, and number. However, the ability to search for specific morphemes is not currently available through other online resources, despite its usefulness.
             Taking inspiration from the Spanish mirador, we hope that this resource will provide a new vantage point from which to view Irish mír. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.
+            <b>About Us</b><br>
+            Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br><br>
+            Ellen Corbett (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             """,
             "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
@@ -51,13 +51,13 @@ def get_text(key, language):
             <b>Na cruthaitheoirí</b><br>
             <u>Mykalin Jones</u> a d'fhobairt<br>
             <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
-            <b>Fúinn</b><br>
-            Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
-            Is taighdeoir PhD agus aistritheoir í Ellen Corbett. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             <b>Míreadóir</b><br>
             Ligeann Míreadóir d’úsáideoirí moirféimí na Gaeilge a chuardach, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh.
             Is féidir le moirféim díochlaonadh, inscne, tuiseal, agus uimhir a chur in iúl. É sin ráite, níl an ábaltacht moirféim ar leith a chuardach ar fáil ar acmhainn ar bith eile ar líne, áfach, cé gur mó an tairbhe.
             Le mirador na Spáinne mar inspioráid, tá súil againn go dtabharfaidh an acmhainn seo stáitse nua as a bheith ag amharc ar mhíreanna éagsúla na Gaeilge. Tá suil againn go mbeidh Míreadóir úsáideach d’fhoghlaimeoirí agus do mhúinteoirí na Gaeilge, chomh maith le haistritheoirí, scríbhneoirí, agus gairmithe eile a n-úsáideann an teanga.
+            <b>Fúinn</b><br>
+            Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
+            Is taighdeoir PhD agus aistritheoir í Ellen Corbett. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             """
         },
         "spinner": {"en": "Running...", "ga": "Ag rith..."}
