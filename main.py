@@ -30,7 +30,7 @@ def get_text(key, language):
         "no_results": {"en": "No results found.", "ga": "Place holder."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Place holder."},
         "footer": {
-            "en": """<b>App Information</b><br>
+            "en": """
             Type any part of a word you would like results for and then select if
             you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: partial matches with and without síntí fada are included in results.<br><br>
@@ -54,8 +54,8 @@ def get_text(key, language):
             <u>Forbairt</u>: Mykalin Jones<br>
             <u>a Aistriúchán agus Coincheap</u>: Ellen Corbett<br><br>
             <b>Fúinn</b><br>
-            <u>Mykalin Jones</u>:Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
-            <u>Ellen Corbett</u>:Is taighdeoir PhD agus aistritheoir í Ellen Corbett. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
+            <u>Mykalin Jones</u>: Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
+            <u>Ellen Corbett</u>: Is taighdeoir PhD agus aistritheoir í Ellen Corbett. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             <b>Míreadóir</b><br>
             Ligeann Míreadóir d’úsáideoirí moirféimí na Gaeilge a chuardach, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh.
             Is féidir le moirféim díochlaonadh, inscne, tuiseal, agus uimhir a chur in iúl. É sin ráite, níl an ábaltacht moirféim ar leith a chuardach ar fáil ar acmhainn ar bith eile ar líne, áfach, cé gur mó an tairbhe.
