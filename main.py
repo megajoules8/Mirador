@@ -42,7 +42,7 @@ def get_text(key, language):
             Taking inspiration from the Spanish <i>mirador</i>, we hope that this resource will provide a new vantage point from which to view Irish <i>mír</i>. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.<br><br>
             <b>About Us</b><br>
             Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br>
-            Ellen Corbett (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
+            <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a> (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             """,
             "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
