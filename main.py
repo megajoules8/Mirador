@@ -32,9 +32,12 @@ def get_text(key, language):
         "footer": {
             "en": """Type any part of a word you would like results for and then select if
             you would like results to "begin with", "contain", or "end with" those letters.<br>
-            Note: partial matches with and without síntí fada are included in results.<br><br>                   
+            Note: partial matches with and without síntí fada are included in results.<br><br> 
+            <b>Creators</b><br>
+            <u>Mykalin Jones</u>: Development<br>
+            <u>Ellen Corbett</u>: Translation and Concept<br><br>
             <b>About Us</b><br>
-            <u>Developement</u>: Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br><br>
+            <u>Development</u>: Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br><br>
             <u>Translation and Concept</u>: Ellen Corbett (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             <b>Míreadóir</b><br>
             Míreadóir [Mir-a-door] enables users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes.
@@ -46,8 +49,8 @@ def get_text(key, language):
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
             NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
             <b>Na cruthaitheoirí</b><br>
-            <u>Forbairt</u>: Mykalin Jones<br>
-            <u>a Aistriúchán agus Coincheap</u>: Ellen Corbett<br><br>
+            <u>Mykalin Jones</u>: a d'fhobairt<br>
+            <u>Ellen Corbett</u>: a d'aistrigh agus a smaoinigh<br><br>
             <b>Fúinn</b><br>
             <u>Mykalin Jones</u>: Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
             <u>Ellen Corbett</u>: Is taighdeoir PhD agus aistritheoir í Ellen Corbett. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
