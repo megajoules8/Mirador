@@ -46,18 +46,16 @@ def get_text(key, language):
             Taking inspiration from the Spanish mirador, we hope that this resource will provide a new vantage point from which to view Irish mír. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.
             """,
             "ga": """<b>App Information</b><br>
-            This is an app to search for Irish words by any substring.<br>
-            To use, type any part of a word you would like results for and then select if
-            you would like results to "begin with", "contain", or "end with" those letters.<br>
-            Note: partial matches with and without síntí fada are included in results.<br><br>
+            Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
+            mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
+            nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
+            NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
             <b>Creators</b><br>
-            <u>Development</u>: Mykalin Jones<br>
+            <u>Forbairt</u>: Mykalin Jones<br>
             <u>a Aistriúchán agus Coincheap</u>: Ellen Corbett<br><br>
-            <b>About Us</b><br>
-            <u>Mykalin Jones</u>: Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
-            <u>Ellen Corbett</u>: Place Holder<br><br>
-            <b>Míreadóir</b><br>
-            <u>Development</u>: Mykalin Jones
+            <b>Fúinn</b><br>
+            <u>Mykalin Jones</u>:Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
+            <u>Ellen Corbett</u>:Is taighdeoir PhD agus aistritheoir í Ellen Corbett. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             <b>Míreadóir</b><br>
             Ligeann Míreadóir d’úsáideoirí moirféimí na Gaeilge a chuardach, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh.
             Is féidir le moirféim díochlaonadh, inscne, tuiseal, agus uimhir a chur in iúl. É sin ráite, níl an ábaltacht moirféim ar leith a chuardach ar fáil ar acmhainn ar bith eile ar líne, áfach, cé gur mó an tairbhe.
