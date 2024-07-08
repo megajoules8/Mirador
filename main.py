@@ -50,7 +50,7 @@ def get_text(key, language):
             NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
             <b>Na cruthaitheoirí</b><br>
             <u>Mykalin Jones</u> a d'fhobairt<br>
-            <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh<br><br>
+            <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
             <b>Fúinn</b><br>
             <u>Mykalin Jones</u>: Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
             <u>Ellen Corbett</u>: Is taighdeoir PhD agus aistritheoir í Ellen Corbett. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
