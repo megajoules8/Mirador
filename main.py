@@ -19,10 +19,10 @@ def load_data(filename: str) -> pd.DataFrame:
 # Function to switch language
 def get_text(key, language):
     texts = {
-        "title": {"en": "Irish Word Search", "ga": "Place holder"},
-        "enter_substring": {"en": "Enter substring to search for:", "ga": "Place holder:"},
-        "search_type": {"en": "Search type:", "ga": "Place holder:"},
-        "search": {"en": "Search", "ga": "Cuardach"},
+        "title": {"en": "Míreadóir: Search Irish-language Morphemes", "ga": "Míreadóir: Cuardaigh Moirféimí na Gaeilge"},
+        "enter_substring": {"en": "Enter morpheme to search:", "ga": "Cuir moirféim isteach chun cuardach a dhéanamh:"},
+        "search_type": {"en": "Search type:", "ga": "Cineál cuardaigh:"},
+        "search": {"en": "Search", "ga": "Cuardaigh"},
         "no_results": {"en": "No results found.", "ga": "Place holder."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Place holder."},
         "footer": {
@@ -44,7 +44,7 @@ logo = "mireadoir.png"  # Update with the path to your logo
 # Sidebar with logo and language selection
 with st.sidebar:
     st.image(logo, width=250)
-    language = st.selectbox("Place Holder / Select Language:", ['ga', 'en'], index=0)
+    language = st.selectbox("Roghnaigh teanga / Select Language:", ['ga', 'en'], index=0)
 
 # App title
 st.title(get_text("title", language))
