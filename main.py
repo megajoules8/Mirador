@@ -39,9 +39,8 @@ def get_text(key, language):
     return texts[key][language]
 
 # Streamlit UI
-#logo = "path_to_your_logo.png"  # Update with the path to your logo
-#st.image(logo, use_column_width=True)
-
+logo = "logo_place_holder.png"  # Update with the path to your logo
+st.image(logo, width=100)
 
 # Language selection with Irish as default
 language = st.selectbox("Place Holder / Select Language:", ['ga', 'en'], index=0)
@@ -67,6 +66,11 @@ def search_words(data, substring, search_type):
         return data[data['NormalizedWord'].str.contains(normalized_substring)]
     return pd.DataFrame(columns=['Word', 'Link'])
 
+# Convert DataFrame to HTML with clickable links
+def df_to_clickable_html(df):
+    df['Word'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Word"]}</a>', axis=1)
+    return df[['Word', 'Link']].to_html(escape=False, index=False)
+
 # Perform search
 if st.button(get_text("search", language)):
     if not substring:
@@ -76,7 +80,7 @@ if st.button(get_text("search", language)):
         if result.empty:
             st.warning(get_text("no_results", language))
         else:
-            st.write(result[['Word', 'Link']].to_html(escape=False), unsafe_allow_html=True)
+            st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
 # Footer
 st.markdown(f"<footer style='text-align: center; padding: 10px 0;'>{get_text('footer', language)}</footer>", unsafe_allow_html=True)
