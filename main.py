@@ -27,11 +27,11 @@ def get_text(key, language):
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Place holder."},
         "footer": {
             "en": """This is an app to search for Irish words by any substring. 
-            \nTo use, type any part of a word you would like results for and then select if
-            \nyou would like results to \"begin with\", \"contain\", or \"end with\" those letters 
-            \nNote: partial matches with and without síntí fada are included in results.
-            \nDevelopement: Mykalin Jones 
-            \nTranslation and concept: Ellen Corbett.""",
+To use, type any part of a word you would like results for and then select if
+you would like results to "begin with", "contain", or "end with" those letters.
+Note: partial matches with and without síntí fada are included in results.
+Development: Mykalin Jones
+Translation and concept: Ellen Corbett.""",
             "ga": "Place holder."
         },
         "spinner": {"en": "Running...", "ga": "Ag rith..."}
@@ -83,4 +83,5 @@ if st.button(get_text("search", language)):
             st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
 # Footer
-st.markdown(f"<footer style='text-align: center; padding: 10px 0;'>{get_text('footer', language)}</footer>", unsafe_allow_html=True)
+footer_text = get_text('footer', language).replace('\n', '<br>')
+st.markdown(f"<footer style='text-align: left; padding: 10px 0;'>{footer_text}</footer>", unsafe_allow_html=True)
