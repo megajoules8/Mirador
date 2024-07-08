@@ -31,7 +31,7 @@ To use, type any part of a word you would like results for and then select if
 you would like results to "begin with", "contain", or "end with" those letters.
 Note: partial matches with and without síntí fada are included in results.
 Development: Mykalin Jones
-Translation and concept: Ellen Corbett.""",
+Language Expertise: Ellen Corbett.""",
             "ga": "Place holder."
         },
         "spinner": {"en": "Running...", "ga": "Ag rith..."}
