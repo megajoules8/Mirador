@@ -48,7 +48,7 @@ def get_text(key, language):
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
             NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
-            <b>Creators</b><br>
+            <b>na cruthaitheoirí</b><br>
             <u>Forbairt</u>: Mykalin Jones<br>
             <u>a Aistriúchán agus Coincheap</u>: Ellen Corbett<br><br>
             <b>Fúinn</b><br>
