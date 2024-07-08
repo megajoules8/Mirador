@@ -39,7 +39,7 @@ Translation and concept: Ellen Corbett.""",
     return texts[key][language]
 
 # Streamlit UI
-logo = "logo_place_holder.png"  # Update with the path to your logo
+logo = "mireadoir.png"  # Update with the path to your logo
 
 # Sidebar with logo and language selection
 with st.sidebar:
