@@ -30,8 +30,7 @@ def get_text(key, language):
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
         "footer": {
-            "en": """Type any part of a word you would like results for and then select if
-            you would like results to "begin with", "contain", or "end with" those letters.<br>
+            "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: partial matches with and without síntí fada are included in results.<br><br> 
             <b>Creators</b><br>
             <u>Mykalin Jones</u>: Development<br>
