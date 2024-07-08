@@ -18,6 +18,7 @@ def load_data(filename: str) -> pd.DataFrame:
 
 # Function to switch language
 def get_text(key, language):
+    language = language.lower()  # Convert to lowercase for matching dictionary keys
     texts = {
         "title": {"en": "Míreadóir: Search Irish-language Morphemes", "ga": "Míreadóir: Cuardaigh Moirféimí na Gaeilge"},
         "enter_substring": {"en": "Enter morpheme to search:", "ga": "Cuir moirféim isteach chun cuardach a dhéanamh:"},
@@ -35,15 +36,15 @@ def get_text(key, language):
             Note: partial matches with and without síntí fada are included in results.<br><br>
             <b>Creators</b><br>
             <u>Development</u>: Mykalin Jones<br>
-            <u>a literal Queen</u>: Ellen Corbett<br><br>
+            <u>Translation and Concept</u>: Ellen Corbett<br><br>
             <b>About Us</b><br>
-            <u>Mykalin Jones</u>: Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge.<br><br>
+            <u>Mykalin Jones</u>: Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br><br>
             <u>Ellen Corbett</u>: Ellen Corbett (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             <b>Míreadóir</b><br>
             Míreadóir [Mir-a-door] enables users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes.
             Morphemes can denote declension, gender, case, and number. However, the ability to search for specific morphemes is not currently available through other online resources, despite its usefulness.
             Taking inspiration from the Spanish mirador, we hope that this resource will provide a new vantage point from which to view Irish mír. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.
-            """,            
+            """,
             "ga": """<b>App Information</b><br>
             This is an app to search for Irish words by any substring.<br>
             To use, type any part of a word you would like results for and then select if
@@ -51,13 +52,17 @@ def get_text(key, language):
             Note: partial matches with and without síntí fada are included in results.<br><br>
             <b>Creators</b><br>
             <u>Development</u>: Mykalin Jones<br>
-            <u>a literal Queen</u>: Ellen Corbett<br><br>
+            <u>a Aistriúchán agus Coincheap</u>: Ellen Corbett<br><br>
             <b>About Us</b><br>
-            <u>Mykalin Jones</u>: Place Holder <br>
+            <u>Mykalin Jones</u>: Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
             <u>Ellen Corbett</u>: Place Holder<br><br>
             <b>Míreadóir</b><br>
             <u>Development</u>: Mykalin Jones
-            """,
+            <b>Míreadóir</b><br>
+            Ligeann Míreadóir d’úsáideoirí moirféimí na Gaeilge a chuardach, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh.
+            Is féidir le moirféim díochlaonadh, inscne, tuiseal, agus uimhir a chur in iúl. É sin ráite, níl an ábaltacht moirféim ar leith a chuardach ar fáil ar acmhainn ar bith eile ar líne, áfach, cé gur mó an tairbhe.
+            Le mirador na Spáinne mar inspioráid, tá súil againn go dtabharfaidh an acmhainn seo stáitse nua as a bheith ag amharc ar mhíreanna éagsúla na Gaeilge. Tá suil againn go mbeidh Míreadóir úsáideach d’fhoghlaimeoirí agus do mhúinteoirí na Gaeilge, chomh maith le haistritheoirí, scríbhneoirí, agus gairmithe eile a n-úsáideann an teanga.
+            """
         },
         "spinner": {"en": "Running...", "ga": "Ag rith..."}
     }
