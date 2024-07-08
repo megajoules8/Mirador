@@ -43,7 +43,7 @@ logo = "mireadoir.png"  # Update with the path to your logo
 
 # Sidebar with logo and language selection
 with st.sidebar:
-    st.image(logo, width=100)
+    st.image(logo, width=150)
     language = st.selectbox("Place Holder / Select Language:", ['ga', 'en'], index=0)
 
 # App title
