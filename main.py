@@ -32,13 +32,10 @@ def get_text(key, language):
         "footer": {
             "en": """Type any part of a word you would like results for and then select if
             you would like results to "begin with", "contain", or "end with" those letters.<br>
-            Note: partial matches with and without síntí fada are included in results.<br><br>
-            <b>Creators</b><br>
-            <u>Development</u>: Mykalin Jones<br>
-            <u>Translation and Concept</u>: Ellen Corbett<br><br>
+            Note: partial matches with and without síntí fada are included in results.<br><br>                   
             <b>About Us</b><br>
-            <u>Mykalin Jones</u>: Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br><br>
-            <u>Ellen Corbett</u>: Ellen Corbett (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
+            <u>Developement</u>: Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br><br>
+            <u>Translation and Concept</u>: Ellen Corbett (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             <b>Míreadóir</b><br>
             Míreadóir [Mir-a-door] enables users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes.
             Morphemes can denote declension, gender, case, and number. However, the ability to search for specific morphemes is not currently available through other online resources, despite its usefulness.
