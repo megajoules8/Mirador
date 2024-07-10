@@ -25,7 +25,7 @@ def get_text(key, language):
         "search_type": {"en": "Search type:", "ga": "Cineál cuardaigh:"},
         "begins_with": {"en": "Begins with", "ga": "A thosaíonn le"},
         "ends_with": {"en": "Ends with", "ga": "A chríochnaíonn le"},
-        "contains": {"en": "Contains", "ga": "ÁIT ar bith"},
+        "contains": {"en": "Contains", "ga": "Áit ar bith"},
         "search": {"en": "Search", "ga": "Cuardaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
