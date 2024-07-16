@@ -103,7 +103,7 @@ def df_to_clickable_html(df):
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
 # Perform search and reset buttons in columns
-col1, col2 = st.columns([1, 1])
+col1, col2, col3 = st.columns([1, 1, 1])
 with col1:
     if st.button(get_text("search", language)):
         if not substring:
@@ -115,7 +115,7 @@ with col1:
             else:
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
-with col2:
+with col3:
     if st.button(get_text("reset", language)):
         st.experimental_rerun()
 
