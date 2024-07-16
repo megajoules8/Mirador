@@ -102,20 +102,22 @@ def df_to_clickable_html(df):
     df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
-# Perform search
-if st.button(get_text("search", language)):
-    if not substring:
-        st.error(get_text("invalid_search", language))
-    else:
-        result = search_words(data, substring, search_type)
-        if result.empty:
-            st.warning(get_text("no_results", language))
+# Perform search and reset buttons in columns
+col1, col2 = st.columns([1, 1])
+with col1:
+    if st.button(get_text("search", language)):
+        if not substring:
+            st.error(get_text("invalid_search", language))
         else:
-            st.write(df_to_clickable_html(result), unsafe_allow_html=True)
+            result = search_words(data, substring, search_type)
+            if result.empty:
+                st.warning(get_text("no_results", language))
+            else:
+                st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
-# Reset button
-if st.button(get_text("reset", language)):
-    st.experimental_rerun()
+with col2:
+    if st.button(get_text("reset", language)):
+        st.experimental_rerun()
 
 # Footer
 footer_text = get_text('footer', language).replace('\n', '<br>')
