@@ -103,7 +103,7 @@ def df_to_clickable_html(df):
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
 # Columns for search and reset buttons
-col1, col2, col3 = st.columns([3, 4, 1])
+col1, col2, col3 = st.columns([3, 3, 1])
 with col1:
     if st.button(get_text("search", language)):
         if not substring:
