@@ -27,6 +27,7 @@ def get_text(key, language):
         "ends_with": {"en": "Ends with", "ga": "A chríochnaíonn le"},
         "contains": {"en": "Contains", "ga": "Áit ar bith"},
         "search": {"en": "Search", "ga": "Cuardaigh"},
+        "reset": {"en": "Reset", "ga": "PLACEHOLDER"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
         "footer": {
@@ -111,6 +112,10 @@ if st.button(get_text("search", language)):
             st.warning(get_text("no_results", language))
         else:
             st.write(df_to_clickable_html(result), unsafe_allow_html=True)
+
+# Reset button
+if st.button(get_text("reset", language)):
+    st.experimental_rerun()
 
 # Footer
 footer_text = get_text('footer', language).replace('\n', '<br>')
