@@ -9,7 +9,7 @@ def normalize_string(input_str: str) -> str:
         if unicodedata.category(char) != 'Mn'
     ).lower()
 
-# Load data (assuming the CSV file is available)
+# Load data 
 @st.cache_data
 def load_data(filename: str) -> pd.DataFrame:
     df = pd.read_csv(filename)
@@ -102,10 +102,16 @@ def df_to_clickable_html(df):
     df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
-# Perform search and reset buttons in columns
-col1, col2 = st.columns([1, 1])
-with col1:
-    if st.button(get_text("search", language)):
+# Form for search and reset buttons
+with st.form(key='search_form'):
+    # Search and reset buttons in columns
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        search_button = st.form_submit_button(label=get_text("search", language))
+    with col2:
+        reset_button = st.form_submit_button(label=get_text("reset", language))
+
+    if search_button:
         if not substring:
             st.error(get_text("invalid_search", language))
         else:
@@ -115,8 +121,7 @@ with col1:
             else:
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
-with col2:
-    if st.button(get_text("reset", language)):
+    if reset_button:
         st.experimental_rerun()
 
 # Footer
