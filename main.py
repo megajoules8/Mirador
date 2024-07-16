@@ -27,7 +27,7 @@ def get_text(key, language):
         "ends_with": {"en": "Ends with", "ga": "A chríochnaíonn le"},
         "contains": {"en": "Contains", "ga": "Áit ar bith"},
         "search": {"en": "Search", "ga": "Cuardaigh"},
-        "reset": {"en": "Reset", "ga": "PLACEHOLDER"},
+        "reset": {"en": "Reset", "ga": "Bánaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
         "footer": {
