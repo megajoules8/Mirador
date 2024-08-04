@@ -9,7 +9,7 @@ def normalize_string(input_str: str) -> str:
         if unicodedata.category(char) != 'Mn'
     ).lower()
 
-# Load data (assuming the CSV file is available)
+# Load data
 @st.cache_data
 def load_data(filename: str) -> pd.DataFrame:
     df = pd.read_csv(filename)
