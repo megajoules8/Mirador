@@ -33,7 +33,7 @@ def get_text(key, language):
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
         "match_type": {"en": "Match type:", "ga": "Cineál comhoiriúnachta:"},
         "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
-        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht iomlán"},
+        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht dhíreach"},
         "footer": {
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: partial matches with and without síntí fada are included in results.<br><br> 
@@ -51,7 +51,7 @@ def get_text(key, language):
             "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
-            NB: cuirtear meaitseáil páirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
+            NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
             <b>Na Cruthaitheoirí</b><br>
             <u>Mykalin Jones</u> a d'fhobairt<br>
             <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
@@ -67,6 +67,14 @@ def get_text(key, language):
         "spinner": {"en": "Running...", "ga": "Ag rith..."}
     }
     return texts[key][language]
+
+# Function to convert DataFrame to Excel
+def df_to_excel(df: pd.DataFrame) -> BytesIO:
+    buffer = BytesIO()
+    with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
+        df.to_excel(writer, index=False, sheet_name='Results')
+    buffer.seek(0)
+    return buffer
 
 # Streamlit UI
 logo = "mireadoir.png"  # Update with the path to your logo
@@ -86,8 +94,6 @@ search_type = st.selectbox(get_text("search_type", language), [
     get_text("ends_with", language),
     get_text("contains", language)
 ])
-
-# Toggle for match type
 match_type = st.radio(get_text("match_type", language), [
     get_text("partial_match", language),
     get_text("exact_match", language)
@@ -100,53 +106,39 @@ data = load_data("teanglann_words.csv")
 def search_words(data, substring, search_type, match_type):
     normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
     if search_type == get_text("begins_with", language):
-        filtered_data = data[data['NormalizedWord'].str.startswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.startswith(substring)]
+        result = data[data['Word'].str.startswith(normalized_substring)]
     elif search_type == get_text("ends_with", language):
-        filtered_data = data[data['NormalizedWord'].str.endswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.endswith(substring)]
+        result = data[data['Word'].str.endswith(normalized_substring)]
     elif search_type == get_text("contains", language):
-        filtered_data = data[data['NormalizedWord'].str.contains(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring)]
+        result = data[data['Word'].str.contains(normalized_substring)]
     else:
-        filtered_data = pd.DataFrame(columns=['Word', 'Link'])
+        result = pd.DataFrame(columns=['Word', 'Link'])
+    result['Word'] = result['Word'].str.strip()  # Remove leading/trailing whitespace
+    result = result.sort_values(by='Word')  # Sort by 'Word' column
+    return result
 
-    # Sort the results alphabetically while preserving original formatting
-    return filtered_data.sort_values(by='Word', key=lambda x: x.apply(lambda w: normalize_string(w)).str.replace('-', '', regex=False))
-
-# Convert DataFrame to HTML with clickable links
-def df_to_clickable_html(df):
-    df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
-    return df[['Word', 'Link']].to_html(escape=False, index=False)
-
-# Convert DataFrame to Excel and provide a download link
-def df_to_excel(df):
-    buffer = BytesIO()
-    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-        df.to_excel(writer, index=False, sheet_name='Results')
-        writer.save()
-    buffer.seek(0)
-    return buffer
-
-# Columns for search, reset, and download buttons
-col1, col2, col3, col4 = st.columns([3, 3, 1, 1])
+# Columns for search and reset buttons
+col1, col2, col3, col4 = st.columns([2, 2, 1, 1])
 with col1:
     if st.button(get_text("search", language)):
         if not substring:
             st.error(get_text("invalid_search", language))
         else:
             result = search_words(data, substring, search_type, match_type)
+            num_results = len(result)
             if result.empty:
                 st.warning(get_text("no_results", language))
             else:
-                result_count = len(result)
-                st.write(f"Number of results: {result_count}")
+                st.write(f"Number of results: {num_results}")
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
-
-                # Provide download link for Excel file
+                
+                # Add button to download results as an Excel file
                 excel_buffer = df_to_excel(result)
                 st.download_button(
-                    label=get_text("download_excel", language),
+                    label="Download results as Excel",
                     data=excel_buffer,
-                    file_name='search_results.xlsx',
-                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                    file_name="results.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
 
 with col3:
