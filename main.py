@@ -123,9 +123,11 @@ with col1:
             st.error(get_text("invalid_search", language))
         else:
             result = search_words(data, substring, search_type, match_type)
+            num_results = len(result)
             if result.empty:
                 st.warning(get_text("no_results", language))
             else:
+                st.write(f"Number of results: {num_results}")
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
 with col3:
