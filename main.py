@@ -106,7 +106,9 @@ def search_words(data, substring, search_type, match_type):
         filtered_data = data[data['NormalizedWord'].str.contains(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring)]
     else:
         filtered_data = pd.DataFrame(columns=['Word', 'Link'])
-    return filtered_data.sort_values(by='Word', ignore_index=True)
+
+    # Sort the results alphabetically while preserving original formatting
+    return filtered_data.sort_values(by='Word', key=lambda x: x.apply(lambda w: normalize_string(w)).str.replace('-', '', regex=False))
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
