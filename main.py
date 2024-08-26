@@ -90,12 +90,15 @@ data = load_data("teanglann_words.csv")
 def search_words(data, substring, search_type):
     normalized_substring = normalize_string(substring)  # Normalize the search input
     if search_type == get_text("begins_with", language):
-        return data[data['NormalizedWord'].str.startswith(normalized_substring)]
+        filtered = data[data['NormalizedWord'].str.startswith(normalized_substring)]
     elif search_type == get_text("ends_with", language):
-        return data[data['NormalizedWord'].str.endswith(normalized_substring)]
+        filtered = data[data['NormalizedWord'].str.endswith(normalized_substring)]
     elif search_type == get_text("contains", language):
-        return data[data['NormalizedWord'].str.contains(normalized_substring)]
-    return pd.DataFrame(columns=['Word', 'Link'])
+        filtered = data[data['NormalizedWord'].str.contains(normalized_substring)]
+    else:
+        filtered = pd.DataFrame(columns=['Word', 'Link'])  # Empty DataFrame if no match
+
+    return filtered.sort_values(by='NormalizedWord')  # Sort the filtered results
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
