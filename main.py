@@ -33,6 +33,7 @@ def get_text(key, language):
         "match_type": {"en": "Match type:", "ga": "Cineál comhoiriúnachta:"},
         "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
         "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht iomlán"},
+        "results_count": {"en": "Number of results:", "ga": "Uimhir na dtorthaí:"},
         "footer": {
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: partial matches with and without síntí fada are included in results.<br><br> 
@@ -127,7 +128,7 @@ with col1:
             if result.empty:
                 st.warning(get_text("no_results", language))
             else:
-                st.write(f"Number of results: {num_results}")
+                st.write(f"{get_text('results_count', language)} {num_results}")
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
 with col3:
