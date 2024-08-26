@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
-from io import BytesIO
 
 # Normalize function to remove accents and convert to lowercase
 def normalize_string(input_str: str) -> str:
@@ -68,14 +67,6 @@ def get_text(key, language):
     }
     return texts[key][language]
 
-# Function to convert DataFrame to Excel
-def df_to_excel(df: pd.DataFrame) -> BytesIO:
-    buffer = BytesIO()
-    with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
-        df.to_excel(writer, index=False, sheet_name='Results')
-    buffer.seek(0)
-    return buffer
-
 # Function to convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df: pd.DataFrame) -> str:
     df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
@@ -139,15 +130,6 @@ with col1:
             else:
                 st.write(f"Number of results: {num_results}")
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
-                
-                # Add button to download results as an Excel file
-                excel_buffer = df_to_excel(result)
-                st.download_button(
-                    label="Download results as Excel",
-                    data=excel_buffer,
-                    file_name="results.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
 
 with col3:
     if st.button(get_text("reset", language)):
