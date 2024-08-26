@@ -91,7 +91,6 @@ match_type = st.radio(get_text("exact_match", language), [get_text("exact_match"
 # Load data
 data = load_data("teanglann_words.csv")
 
-# Search functionality
 def search_words(data, substring, search_type, match_type):
     if match_type == get_text("partial_match", language):
         normalized_substring = normalize_string(substring)  # Normalize the search input
@@ -109,7 +108,10 @@ def search_words(data, substring, search_type, match_type):
     else:
         filtered = pd.DataFrame(columns=['Word', 'Link'])  # Empty DataFrame if no match
 
-    return filtered.sort_values(by='SearchWord')  # Sort the filtered results
+    # Sort by 'Word' to ensure alphabetical order
+    return filtered.sort_values(by='Word')
+
+    #return filtered.sort_values(by='SearchWord')  # Sort the filtered results
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
