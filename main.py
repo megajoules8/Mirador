@@ -76,6 +76,11 @@ def df_to_excel(df: pd.DataFrame) -> BytesIO:
     buffer.seek(0)
     return buffer
 
+# Function to convert DataFrame to HTML with clickable links
+def df_to_clickable_html(df: pd.DataFrame) -> str:
+    df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
+    return df[['Word', 'Link']].to_html(escape=False, index=False)
+
 # Streamlit UI
 logo = "mireadoir.png"  # Update with the path to your logo
 
@@ -104,7 +109,10 @@ data = load_data("teanglann_words.csv")
 
 # Search functionality
 def search_words(data, substring, search_type, match_type):
-    normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
+    if match_type == get_text("partial_match", language):
+        normalized_substring = normalize_string(substring)
+    else:
+        normalized_substring = substring
     if search_type == get_text("begins_with", language):
         result = data[data['Word'].str.startswith(normalized_substring)]
     elif search_type == get_text("ends_with", language):
@@ -118,7 +126,7 @@ def search_words(data, substring, search_type, match_type):
     return result
 
 # Columns for search and reset buttons
-col1, col2, col3, col4 = st.columns([2, 2, 1, 1])
+col1, col2, col3 = st.columns([3, 3, 1])
 with col1:
     if st.button(get_text("search", language)):
         if not substring:
