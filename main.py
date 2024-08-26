@@ -99,12 +99,14 @@ data = load_data("teanglann_words.csv")
 def search_words(data, substring, search_type, match_type):
     normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
     if search_type == get_text("begins_with", language):
-        return data[data['NormalizedWord'].str.startswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.startswith(substring)]
+        filtered_data = data[data['NormalizedWord'].str.startswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.startswith(substring)]
     elif search_type == get_text("ends_with", language):
-        return data[data['NormalizedWord'].str.endswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.endswith(substring)]
+        filtered_data = data[data['NormalizedWord'].str.endswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.endswith(substring)]
     elif search_type == get_text("contains", language):
-        return data[data['NormalizedWord'].str.contains(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring)]
-    return pd.DataFrame(columns=['Word', 'Link'])
+        filtered_data = data[data['NormalizedWord'].str.contains(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring)]
+    else:
+        filtered_data = pd.DataFrame(columns=['Word', 'Link'])
+    return filtered_data.sort_values(by='Word', ignore_index=True)
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
@@ -122,8 +124,6 @@ with col1:
             if result.empty:
                 st.warning(get_text("no_results", language))
             else:
-                # Sort the results in alphabetical order
-                result = result.sort_values(by='Word')
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
 with col3:
