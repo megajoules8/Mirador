@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
+from io import BytesIO
 
 # Normalize function to remove accents and convert to lowercase
 def normalize_string(input_str: str) -> str:
@@ -115,8 +116,17 @@ def df_to_clickable_html(df):
     df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
-# Columns for search and reset buttons
-col1, col2, col3 = st.columns([3, 3, 1])
+# Convert DataFrame to Excel and provide a download link
+def df_to_excel(df):
+    buffer = BytesIO()
+    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Results')
+        writer.save()
+    buffer.seek(0)
+    return buffer
+
+# Columns for search, reset, and download buttons
+col1, col2, col3, col4 = st.columns([3, 3, 1, 1])
 with col1:
     if st.button(get_text("search", language)):
         if not substring:
@@ -126,7 +136,18 @@ with col1:
             if result.empty:
                 st.warning(get_text("no_results", language))
             else:
+                result_count = len(result)
+                st.write(f"Number of results: {result_count}")
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
+
+                # Provide download link for Excel file
+                excel_buffer = df_to_excel(result)
+                st.download_button(
+                    label=get_text("download_excel", language),
+                    data=excel_buffer,
+                    file_name='search_results.xlsx',
+                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                )
 
 with col3:
     if st.button(get_text("reset", language)):
