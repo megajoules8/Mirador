@@ -62,7 +62,8 @@ def get_text(key, language):
         },
         "spinner": {"en": "Running...", "ga": "Ag rith..."},
         "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
-        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht beacht"}
+        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht beacht"},
+        "match_type": {"en": "Match Type", "ga": "Cineál comhoiriúnachta"}
     }
     return texts[key][language]
 
@@ -85,34 +86,28 @@ search_type = st.selectbox(get_text("search_type", language), [
     get_text("contains", language)
 ])
 
-# Toggle for exact or partial match
-match_type = st.radio(get_text("match_type", language), [get_text("partial_match", language), get_text("exact_match", language)])
+# Radio button for match type
+match_type = st.radio(get_text("match_type", language), [
+    get_text("partial_match", language),
+    get_text("exact_match", language)
+])
 
 # Load data
 data = load_data("teanglann_words.csv")
 
 # Search functionality
 def search_words(data, substring, search_type, match_type):
-    # Check match type to decide whether to normalize the search input and data
-    if match_type == get_text("partial_match", language):
-        normalized_substring = normalize_string(substring)  # Normalize the search input
-        data['SearchWord'] = data['NormalizedWord']
-    else:
-        normalized_substring = substring  # Use exact substring without normalization
-        data['SearchWord'] = data['Word']
-
-    # Apply the search based on the selected search type
+    normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
     if search_type == get_text("begins_with", language):
-        filtered = data[data['SearchWord'].str.startswith(normalized_substring)]
+        result = data[data['SearchWord'].str.startswith(normalized_substring)]
     elif search_type == get_text("ends_with", language):
-        filtered = data[data['SearchWord'].str.endswith(normalized_substring)]
+        result = data[data['SearchWord'].str.endswith(normalized_substring)]
     elif search_type == get_text("contains", language):
-        filtered = data[data['SearchWord'].str.contains(normalized_substring)]
+        result = data[data['SearchWord'].str.contains(normalized_substring)]
     else:
-        filtered = pd.DataFrame(columns=['Word', 'Link'])  # Empty DataFrame if no match
-
-    # Sort by 'Word' to ensure alphabetical order
-    return filtered.sort_values(by='Word')
+        result = pd.DataFrame(columns=['Word', 'Link'])
+    result = result[['Word', 'Link']].sort_values(by='Word')
+    return result
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
