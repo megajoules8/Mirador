@@ -30,6 +30,9 @@ def get_text(key, language):
         "reset": {"en": "Reset", "ga": "Bánaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
+        "match_type": {"en": "Match type:", "ga": "Cineál comhoiriúnachta:"},
+        "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
+        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht iomlán"},
         "footer": {
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: partial matches with and without síntí fada are included in results.<br><br> 
@@ -47,7 +50,7 @@ def get_text(key, language):
             "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
-            NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
+            NB: cuirtear meaitseáil páirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
             <b>Na Cruthaitheoirí</b><br>
             <u>Mykalin Jones</u> a d'fhobairt<br>
             <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
@@ -60,10 +63,7 @@ def get_text(key, language):
             Is taighdeoir PhD agus aistritheoir í <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a>. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             """
         },
-        "spinner": {"en": "Running...", "ga": "Ag rith..."},
-        "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
-        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht beacht"},
-        "match_type": {"en": "Match Type", "ga": "Cineál comhoiriúnachta"}
+        "spinner": {"en": "Running...", "ga": "Ag rith..."}
     }
     return texts[key][language]
 
@@ -86,7 +86,7 @@ search_type = st.selectbox(get_text("search_type", language), [
     get_text("contains", language)
 ])
 
-# Radio button for match type
+# Toggle for match type
 match_type = st.radio(get_text("match_type", language), [
     get_text("partial_match", language),
     get_text("exact_match", language)
@@ -99,15 +99,12 @@ data = load_data("teanglann_words.csv")
 def search_words(data, substring, search_type, match_type):
     normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
     if search_type == get_text("begins_with", language):
-        result = data[data['SearchWord'].str.startswith(normalized_substring)]
+        return data[data['NormalizedWord'].str.startswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.startswith(substring)]
     elif search_type == get_text("ends_with", language):
-        result = data[data['SearchWord'].str.endswith(normalized_substring)]
+        return data[data['NormalizedWord'].str.endswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.endswith(substring)]
     elif search_type == get_text("contains", language):
-        result = data[data['SearchWord'].str.contains(normalized_substring)]
-    else:
-        result = pd.DataFrame(columns=['Word', 'Link'])
-    result = result[['Word', 'Link']].sort_values(by='Word')
-    return result
+        return data[data['NormalizedWord'].str.contains(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring)]
+    return pd.DataFrame(columns=['Word', 'Link'])
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
@@ -125,6 +122,8 @@ with col1:
             if result.empty:
                 st.warning(get_text("no_results", language))
             else:
+                # Sort the results in alphabetical order
+                result = result.sort_values(by='Word')
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
 with col3:
