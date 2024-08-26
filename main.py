@@ -20,7 +20,7 @@ def load_data(filename: str) -> pd.DataFrame:
 def get_text(key, language):
     language = language.lower()  # Convert to lowercase for matching dictionary keys
     texts = {
-        "title": {"en": "Irish Words Search", "ga": "Cuardach ar Fhocail na Gaeilge"},
+        "title": {"en": "Míreadóir: Search Irish-language Morphemes", "ga": "Míreadóir: Cuardaigh Moirféimí na Gaeilge"},
         "enter_substring": {"en": "Enter morpheme to search:", "ga": "Cuir moirféim isteach chun cuardach a dhéanamh:"},
         "search_type": {"en": "Search type:", "ga": "Cineál cuardaigh:"},
         "begins_with": {"en": "Begins with", "ga": "A thosaíonn le"},
@@ -30,32 +30,40 @@ def get_text(key, language):
         "reset": {"en": "Reset", "ga": "Bánaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
+        "match_type": {"en": "Match type:", "ga": "Cineál comhoiriúnachta:"},
+        "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
+        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht iomlán"},
         "footer": {
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
-            Note: partial matches with and without accents are included in results.<br><br> 
+            Note: partial matches with and without síntí fada are included in results.<br><br> 
             <b>Creators</b><br>
             <u>Mykalin Jones</u>: Development<br>
             <u>Ellen Corbett</u>: Translation and Concept<br><br>
+            <b>Míreadóir</b><br>
+            <i>Míreadóir</i> [Mir-a-door] enables users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes.<br>
+            Morphemes can denote declension, gender, case, and number. However, the ability to search for specific morphemes is not currently available through other online resources, despite its usefulness.<br>
+            Taking inspiration from the Spanish <i>mirador</i>, we hope that this resource will provide a new vantage point from which to view Irish <i>mír</i>. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.<br><br>
             <b>About Us</b><br>
-            Mykalin Jones is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br>
-            <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a> is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
+            Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br>
+            <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a> (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             """,
             "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
-            NB: cuirtear meaitseáil pháirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
+            NB: cuirtear meaitseáil páirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
             <b>Na Cruthaitheoirí</b><br>
             <u>Mykalin Jones</u> a d'fhobairt<br>
             <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
+            <b>Míreadóir</b><br>
+            Ligeann Míreadóir d’úsáideoirí moirféimí na Gaeilge a chuardach, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh.<br>
+            Is féidir le moirféim díochlaonadh, inscne, tuiseal, agus uimhir a chur in iúl. É sin ráite, níl an ábaltacht moirféim ar leith a chuardach ar fáil ar acmhainn ar bith eile ar líne, áfach, cé gur mó an tairbhe.<br>
+            Le <i>mirador</i> na Spáinne mar inspioráid, tá súil againn go dtabharfaidh an acmhainn seo stáitse nua as a bheith ag amharc ar mhíreanna éagsúla na Gaeilge. Tá suil againn go mbeidh Míreadóir úsáideach d’fhoghlaimeoirí agus do mhúinteoirí na Gaeilge, chomh maith le haistritheoirí, scríbhneoirí, agus gairmithe eile a n-úsáideann an teanga.<br><br>
             <b>Fúinn</b><br>
-            Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones. Tá a croí istigh sa Ghaeilge. <br>
+            Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
             Is taighdeoir PhD agus aistritheoir í <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a>. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             """
         },
-        "spinner": {"en": "Running...", "ga": "Ag rith..."},
-        "match_type": {"en": "Match type:", "ga": "Cineál comhoiriúnachta:"},
-        "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
-        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht iomlán"}
+        "spinner": {"en": "Running...", "ga": "Ag rith..."}
     }
     return texts[key][language]
 
@@ -77,6 +85,8 @@ search_type = st.selectbox(get_text("search_type", language), [
     get_text("ends_with", language),
     get_text("contains", language)
 ])
+
+# Toggle for match type
 match_type = st.radio(get_text("match_type", language), [
     get_text("partial_match", language),
     get_text("exact_match", language)
@@ -87,23 +97,18 @@ data = load_data("teanglann_words.csv")
 
 # Search functionality
 def search_words(data, substring, search_type, match_type):
-    if match_type == get_text("exact_match", language):
-        search_substring = substring
-    else:
-        search_substring = normalize_string(substring)
-    
-    normalized_substring = normalize_string(substring)
-    
+    normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
     if search_type == get_text("begins_with", language):
-        result = data[data['NormalizedWord'].str.startswith(normalized_substring)]
+        filtered_data = data[data['NormalizedWord'].str.startswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.startswith(substring)]
     elif search_type == get_text("ends_with", language):
-        result = data[data['NormalizedWord'].str.endswith(normalized_substring)]
+        filtered_data = data[data['NormalizedWord'].str.endswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.endswith(substring)]
     elif search_type == get_text("contains", language):
-        result = data[data['NormalizedWord'].str.contains(normalized_substring)]
+        filtered_data = data[data['NormalizedWord'].str.contains(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring)]
     else:
-        result = pd.DataFrame(columns=['Word', 'Link'])
+        filtered_data = pd.DataFrame(columns=['Word', 'Link'])
 
-    return result.sort_values(by='Word')
+    # Sort the results alphabetically while preserving original formatting
+    return filtered_data.sort_values(by='Word', key=lambda x: x.apply(lambda w: normalize_string(w)).str.replace('-', '', regex=False))
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
@@ -118,11 +123,9 @@ with col1:
             st.error(get_text("invalid_search", language))
         else:
             result = search_words(data, substring, search_type, match_type)
-            num_results = len(result)
             if result.empty:
                 st.warning(get_text("no_results", language))
             else:
-                st.write(f"Number of results: {num_results}")
                 st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
 with col3:
