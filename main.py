@@ -30,8 +30,6 @@ def get_text(key, language):
         "reset": {"en": "Reset", "ga": "Bánaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
-        "exact_match": {"en": "Exact match (include accents)", "ga": "Meaitseáil cruinn (cuir síntí san áireamh)"},
-        "partial_match": {"en": "Partial match (ignore accents)", "ga": "Meaitseáil pháirteach (sínte gan áireamh)"},
         "footer": {
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: partial matches with and without síntí fada are included in results.<br><br> 
@@ -62,7 +60,9 @@ def get_text(key, language):
             Is taighdeoir PhD agus aistritheoir í <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a>. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             """
         },
-        "spinner": {"en": "Running...", "ga": "Ag rith..."}
+        "spinner": {"en": "Running...", "ga": "Ag rith..."},
+        "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
+        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht beacht"}
     }
     return texts[key][language]
 
@@ -86,12 +86,14 @@ search_type = st.selectbox(get_text("search_type", language), [
 ])
 
 # Toggle for exact or partial match
-match_type = st.radio(get_text("exact_match", language), [get_text("exact_match", language), get_text("partial_match", language)])
+match_type = st.radio(get_text("match_type", language), [get_text("partial_match", language), get_text("exact_match", language)])
 
 # Load data
 data = load_data("teanglann_words.csv")
 
+# Search functionality
 def search_words(data, substring, search_type, match_type):
+    # Check match type to decide whether to normalize the search input and data
     if match_type == get_text("partial_match", language):
         normalized_substring = normalize_string(substring)  # Normalize the search input
         data['SearchWord'] = data['NormalizedWord']
@@ -99,6 +101,7 @@ def search_words(data, substring, search_type, match_type):
         normalized_substring = substring  # Use exact substring without normalization
         data['SearchWord'] = data['Word']
 
+    # Apply the search based on the selected search type
     if search_type == get_text("begins_with", language):
         filtered = data[data['SearchWord'].str.startswith(normalized_substring)]
     elif search_type == get_text("ends_with", language):
@@ -110,8 +113,6 @@ def search_words(data, substring, search_type, match_type):
 
     # Sort by 'Word' to ensure alphabetical order
     return filtered.sort_values(by='Word')
-
-    #return filtered.sort_values(by='SearchWord')  # Sort the filtered results
 
 # Convert DataFrame to HTML with clickable links
 def df_to_clickable_html(df):
