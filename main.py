@@ -30,18 +30,18 @@ def get_text(key, language):
         "reset": {"en": "Reset", "ga": "Bánaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
-        "match_type": {"en": "Match type:", "ga": "Cineál comhoiriúnachta:"},
-        "partial_match": {"en": "Partial match", "ga": "Comhoiriúnacht pháirteach"},
-        "exact_match": {"en": "Exact match", "ga": "Comhoiriúnacht iomlán"},
+        "match_type": {"en": "Match type:", "ga": "Cineál meaits:"},
+        "partial_match": {"en": "Partial match", "ga": "Meaits páirteach"},
+        "exact_match": {"en": "Exact match", "ga": "Meaits cruinn"},
         "results_count": {"en": "Number of results:", "ga": "Uimhir na dtorthaí:"},
         "footer": {
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
-            Note: partial matches with and without síntí fada are included in results.<br><br> 
+            Note: Partial matches with and without sínte fada are included in the partial match results.<br><br> 
             <b>Creators</b><br>
             <u>Mykalin Jones</u>: Development<br>
             <u>Ellen Corbett</u>: Translation and Concept<br><br>
             <b>Míreadóir</b><br>
-            <i>Míreadóir</i> [Mir-a-door] enables users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes.<br>
+            <i>Míreadóir</i> [Mir-a-door] aims to enable users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes. Currently it allows users to search by substring (parts of words).<br>
             Morphemes can denote declension, gender, case, and number. However, the ability to search for specific morphemes is not currently available through other online resources, despite its usefulness.<br>
             Taking inspiration from the Spanish <i>mirador</i>, we hope that this resource will provide a new vantage point from which to view Irish <i>mír</i>. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.<br><br>
             <b>About Us</b><br>
@@ -51,12 +51,12 @@ def get_text(key, language):
             "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
-            NB: cuirtear meaitseáil páirteach le agus gan sínte fada san áireamh sna torthaí.<br><br>
+            Nóta: Cuirtear meaitseanna páirteacha le agus gan shínte fada san áireamh i dtórthaí [partial match]<br><br>
             <b>Na Cruthaitheoirí</b><br>
             <u>Mykalin Jones</u> a d'fhobairt<br>
             <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
             <b>Míreadóir</b><br>
-            Ligeann Míreadóir d’úsáideoirí moirféimí na Gaeilge a chuardach, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh.<br>
+            Uasdátú: Is é mar sprioc ag Míreadóir go mbeidh úsáideoirí ábalta cuardach a dhéanamh ar mhoirféim ar leith, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh. Ag an bhomaite, ligeann Míreadóir d’úsáideoirí fotheaghráin [‘substrings’] a chuardach.<br>
             Is féidir le moirféim díochlaonadh, inscne, tuiseal, agus uimhir a chur in iúl. É sin ráite, níl an ábaltacht moirféim ar leith a chuardach ar fáil ar acmhainn ar bith eile ar líne, áfach, cé gur mó an tairbhe.<br>
             Le <i>mirador</i> na Spáinne mar inspioráid, tá súil againn go dtabharfaidh an acmhainn seo stáitse nua as a bheith ag amharc ar mhíreanna éagsúla na Gaeilge. Tá suil againn go mbeidh Míreadóir úsáideach d’fhoghlaimeoirí agus do mhúinteoirí na Gaeilge, chomh maith le haistritheoirí, scríbhneoirí, agus gairmithe eile a n-úsáideann an teanga.<br><br>
             <b>Fúinn</b><br>
