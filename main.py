@@ -30,10 +30,10 @@ def get_text(key, language):
         "reset": {"en": "Reset", "ga": "Bánaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
         "invalid_search": {"en": "Please enter a valid substring.", "ga": "Cuir cuardach bailí isteach."},
-        "match_type": {"en": "Match type:", "ga": "Cineál meaits:"},
+        "match_type": {"en": "Match type:", "ga": "An Sórt Meaits:"},
         "partial_match": {"en": "Partial match", "ga": "Meaits páirteach"},
         "exact_match": {"en": "Exact match", "ga": "Meaits cruinn"},
-        "results_count": {"en": "Number of results:", "ga": "Uimhir na dtorthaí:"},
+        "results_count": {"en": "Number of results:", "ga": "Líon na dtorthaí:"},
         "footer": {
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: Partial matches with and without sínte fada are included in the partial match results.<br><br> 
@@ -51,7 +51,7 @@ def get_text(key, language):
             "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
             mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
-            Nóta: Cuirtear meaitseanna páirteacha le agus gan shínte fada san áireamh i dtórthaí [partial match]<br><br>
+            Nóta: Cuirtear meaitseanna páirteacha le agus gan shínte fada san áireamh i dtórthaí meaits páirteach<br><br>
             <b>Na Cruthaitheoirí</b><br>
             <u>Mykalin Jones</u> a d'fhobairt<br>
             <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
