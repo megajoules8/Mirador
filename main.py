@@ -20,7 +20,7 @@ def load_data(filename: str) -> pd.DataFrame:
 def get_text(key, language):
     language = language.lower()  # Convert to lowercase for matching dictionary keys
     texts = {
-        "title": {"en": "Míreadóir: Search Irish-language Morphemes and Substrings", "ga": "Míreadóir: Cuardaigh Moirféimí agus fotheaghráin na Gaeilge"},
+        "title": {"en": "Míreadóir: Search Irish-language Morphemes and Substrings", "ga": "Míreadóir: Cuardaigh Moirféimí agus Fotheaghráin na Gaeilge"},
         "enter_substring": {"en": "Enter substring to search:", "ga": "Cuir fotheagrán isteach chun cuardach a dhéanamh:"},
         "search_type": {"en": "Search type:", "ga": "Cineál cuardaigh:"},
         "begins_with": {"en": "Begins with", "ga": "A thosaíonn le"},
@@ -48,8 +48,8 @@ def get_text(key, language):
             Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br>
             <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a> (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             """,
-            "ga": """Cuir isteach an mhoirféim a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
-            mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim ar leith, 
+            "ga": """Cuir isteach an mhoirféim nó an fotheaghrán a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
+            mhaith leat torthaí “a thosaíonn le”, nó “a chríochnaíonn le” moirféim nó fotheaghrán ar leith, 
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
             Nóta: Cuirtear meaitseanna páirteacha le agus gan shínte fada san áireamh i dtórthaí meaits páirteach<br><br>
             <b>Na Cruthaitheoirí</b><br>
