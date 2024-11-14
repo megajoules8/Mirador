@@ -20,8 +20,8 @@ def load_data(filename: str) -> pd.DataFrame:
 def get_text(key, language):
     language = language.lower()  # Convert to lowercase for matching dictionary keys
     texts = {
-        "title": {"en": "Míreadóir: Search Irish-language Morphemes", "ga": "Míreadóir: Cuardaigh Moirféimí na Gaeilge"},
-        "enter_substring": {"en": "Enter morpheme to search:", "ga": "Cuir moirféim isteach chun cuardach a dhéanamh:"},
+        "title": {"en": "Míreadóir: Search Irish-language Morphemes and Substrings", "ga": "Míreadóir: Cuardaigh Moirféimí agus fotheaghráin na Gaeilge"},
+        "enter_substring": {"en": "Enter substring to search:", "ga": "Cuir fotheagrán isteach chun cuardach a dhéanamh:"},
         "search_type": {"en": "Search type:", "ga": "Cineál cuardaigh:"},
         "begins_with": {"en": "Begins with", "ga": "A thosaíonn le"},
         "ends_with": {"en": "Ends with", "ga": "A chríochnaíonn le"},
