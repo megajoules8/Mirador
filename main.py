@@ -21,18 +21,18 @@ def normalize_string(input_str: str) -> str:
 @st.cache_data
 def load_data(filename: str) -> pd.DataFrame:
     """
-    Load data from a CSV file and preprocess it by adding normalized columns.
+    Load data from a CSV file, preprocess it, and sort by SortKey.
 
     Args:
         filename (str): The path to the CSV file.
 
     Returns:
-        pd.DataFrame: The preprocessed DataFrame with normalized columns.
+        pd.DataFrame: The preprocessed and sorted DataFrame.
     """
     df = pd.read_csv(filename)
     df['NormalizedWord'] = df['Word'].apply(normalize_string)
     df['SortKey'] = df['NormalizedWord'].str.replace('-', '', regex=False)
-    return df
+    return df.sort_values(by='SortKey')
 
 def get_text(key: str, language: str) -> str:
     """
@@ -134,7 +134,7 @@ def search_words(data: pd.DataFrame, substring: str, search_type: str, match_typ
         match_type (str): The type of match ('partial_match', 'exact_match').
 
     Returns:
-        pd.DataFrame: The filtered and sorted DataFrame with the search results.
+        pd.DataFrame: The filtered DataFrame with the search results.
     """
     normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
     if search_type == get_text("begins_with", language):
@@ -146,8 +146,7 @@ def search_words(data: pd.DataFrame, substring: str, search_type: str, match_typ
     else:
         filtered_data = pd.DataFrame(columns=['Word', 'Link'])
 
-    # Sort the results using the precomputed SortKey column
-    return filtered_data.sort_values(by='SortKey')
+    return filtered_data
 
 def df_to_clickable_html(df: pd.DataFrame) -> str:
     """
