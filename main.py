@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
+import re
 
 def normalize_string(input_str: str) -> str:
     """
@@ -165,7 +166,8 @@ def df_to_clickable_html(df: pd.DataFrame) -> str:
 col1, col2, col3 = st.columns([3, 3, 1])
 with col1:
     if st.button(get_text("search", language)):
-        if not substring:
+        # Validate the substring
+        if not substring or not re.match(r'^[a-zA-ZÀ-ÿ\s\-]+$', substring.strip()):
             st.error(get_text("invalid_search", language))
         else:
             result = search_words(data, substring, search_type, match_type)
@@ -178,7 +180,7 @@ with col1:
 
 with col3:
     if st.button(get_text("reset", language)):
-        st.experimental_rerun()
+        st.rerun()
 
 # Footer
 footer_text = get_text('footer', language).replace('\n', '<br>')
