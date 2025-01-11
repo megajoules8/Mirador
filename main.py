@@ -2,22 +2,48 @@ import streamlit as st
 import pandas as pd
 import unicodedata
 
-# Normalize function to remove accents and convert to lowercase
 def normalize_string(input_str: str) -> str:
+    """
+    Normalize function to remove accents and convert to lowercase.
+
+    Args:
+        input_str (str): The input string to normalize.
+
+    Returns:
+        str: The normalized string.
+    """
     return ''.join(
         char for char in unicodedata.normalize('NFD', input_str)
         if unicodedata.category(char) != 'Mn'
     ).lower()
 
-# Load data
 @st.cache_data
 def load_data(filename: str) -> pd.DataFrame:
+    """
+    Load data from a CSV file and preprocess it by adding normalized columns.
+
+    Args:
+        filename (str): The path to the CSV file.
+
+    Returns:
+        pd.DataFrame: The preprocessed DataFrame with normalized columns.
+    """
     df = pd.read_csv(filename)
     df['NormalizedWord'] = df['Word'].apply(normalize_string)
+    df['SortKey'] = df['NormalizedWord'].str.replace('-', '', regex=False)
     return df
 
-# Function to switch language
-def get_text(key, language):
+def get_text(key: str, language: str) -> str:
+    """
+    Retrieve the text for a given key and language.
+
+    Args:
+        key (str): The key for the text.
+        language (str): The language code (e.g., 'en' or 'ga').
+
+    Returns:
+        str: The text corresponding to the key and language.
+    """
     language = language.lower()  # Convert to lowercase for matching dictionary keys
     texts = {
         "title": {"en": "Míreadóir: Search Irish-language Morphemes and Substrings", "ga": "Míreadóir: Cuardaigh Moirféimí agus Fotheaghráin na Gaeilge"},
@@ -96,8 +122,19 @@ match_type = st.radio(get_text("match_type", language), [
 # Load data
 data = load_data("teanglann_words.csv")
 
-# Search functionality
-def search_words(data, substring, search_type, match_type):
+def search_words(data: pd.DataFrame, substring: str, search_type: str, match_type: str) -> pd.DataFrame:
+    """
+    Search for words in the DataFrame based on the given substring, search type, and match type.
+
+    Args:
+        data (pd.DataFrame): The DataFrame containing the words to search.
+        substring (str): The substring to search for.
+        search_type (str): The type of search ('begins_with', 'ends_with', 'contains').
+        match_type (str): The type of match ('partial_match', 'exact_match').
+
+    Returns:
+        pd.DataFrame: The filtered and sorted DataFrame with the search results.
+    """
     normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
     if search_type == get_text("begins_with", language):
         filtered_data = data[data['NormalizedWord'].str.startswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.startswith(substring)]
@@ -108,11 +145,19 @@ def search_words(data, substring, search_type, match_type):
     else:
         filtered_data = pd.DataFrame(columns=['Word', 'Link'])
 
-    # Sort the results alphabetically while preserving original formatting
-    return filtered_data.sort_values(by='Word', key=lambda x: x.apply(lambda w: normalize_string(w)).str.replace('-', '', regex=False))
+    # Sort the results using the precomputed SortKey column
+    return filtered_data.sort_values(by='SortKey')
 
-# Convert DataFrame to HTML with clickable links
-def df_to_clickable_html(df):
+def df_to_clickable_html(df: pd.DataFrame) -> str:
+    """
+    Convert a DataFrame to HTML with clickable links.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to convert.
+
+    Returns:
+        str: The HTML representation of the DataFrame with clickable links.
+    """
     df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
