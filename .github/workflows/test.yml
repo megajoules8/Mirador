@@ -1,4 +1,4 @@
-name: tests_main
+name: tests
 
 on:
   push:
@@ -32,4 +32,4 @@ jobs:
         run: uv pip sync --system requirements-dev.txt
 
       - name: run tests
-        run: uv run pytest --cov -s -v tests.py
+        run: uv run pytest --cov -s -v tests_main.py
