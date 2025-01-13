@@ -16,11 +16,13 @@ I am exploring both machine learning and rule based approaches towards this goal
 
 "Morphemes" are the smallest parts of words that contain meaning on their own. There is inflectional and derivational morphology. 
 Inflectional morphology has to do with changes to words that affect the grammar. 
+
 Examples: 
 - adding s to cat to make it the plural "cats"
 - initial mutations in Irish like leniting a regular verb to make it past tense: tóg -> thóg
 
 This project is more concerned with derivational morphology which has to do with separating words into their roots.
+
 Examples:
 - feargach ("angry") -> fearg ("anger") + -ach ("connected to" or "having")
 - rófhada ("too far") -> ró ("too much") + fada ("long" or "far")
