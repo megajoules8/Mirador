@@ -1,4 +1,5 @@
 The app can be found here: [Míreadóir](mireadoir.ie)
+
 I have a research license with Foras Na Gaeilge. Please contact them if you would like permission to use data from Teangleann. 
 
 Míreadóir enables users to search Irish words by substring. 
