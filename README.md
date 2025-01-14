@@ -1,5 +1,10 @@
 The app can be found here: [Míreadóir](mireadoir.ie)
 
+I hacked it in a day and then had a lot of refactoring to do. I'm still working on tidying up main.py. Fixing the sorting and normalising sped it up substantially. 
+TODO:
+- the file interleaves functions and other code, making it hard to understand the structure -> moving all non-function code to a if __name__ == "__main__": block at the bottom.
+- extract the long literals in get_text into constants (or maybe a helper module). Typically a lot of this html formatting work would be done via templates (e.g. jinja)
+
 I have a research license with Foras Na Gaeilge. Please contact them if you would like permission to use data from Teangleann. 
 
 Míreadóir enables users to search Irish words by substring. 
