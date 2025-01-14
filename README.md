@@ -1,4 +1,4 @@
-## Practical Information
+# Practical Information
 The app can be found here: [Míreadóir](mireadoir.ie)
 
 I hacked it in a little over a day, added a bunch of stuff as needed over a month or so when I had time, and then had a lot of refactoring to do. I'm still working on tidying up main.py. Fixing the sorting and normalising sped it up substantially. 
@@ -9,7 +9,7 @@ I hacked it in a little over a day, added a bunch of stuff as needed over a mont
 
 ### I have a research license with Foras Na Gaeilge. Please contact them if you would like permission to use data from Teangleann. 
 
-### Project Description and Some Future Work
+## Project Description and Some Future Work
 Míreadóir enables users to search Irish words by substring. 
 In its current state, it has been used as:
 - a crude rhyming dictionary
