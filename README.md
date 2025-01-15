@@ -1,5 +1,5 @@
 # Practical Information
-The app can be found here: [Míreadóir](mireadoir.ie)
+The app can be found here: [Míreadóir](https://mireadoir.ie)
 
 I hacked it in a little over a day, added a bunch of stuff as needed over a month or so when I had time, and then had a lot of refactoring to do. I'm still working on tidying up main.py. Fixing the sorting and normalising sped it up substantially. 
 
