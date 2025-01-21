@@ -95,7 +95,7 @@ def get_text(key: str, language: str) -> str:
     }
     return texts[key][language]
 
-def search_words(data: pd.DataFrame, substring: str, search_type: str, match_type: str) -> pd.DataFrame:
+def search_words(data: pd.DataFrame, substring: str, search_type: str, match_type: str, language: str) -> pd.DataFrame:
     """
     Search for words in the DataFrame based on the given substring, search type, and match type.
 
@@ -172,7 +172,7 @@ if __name__ == "__main__":
             if not substring or not re.match(r'^[a-zA-ZÀ-ÿ\s\-]+$', substring.strip()):
                 st.error(get_text("invalid_search", language))
             else:
-                result = search_words(data, substring, search_type, match_type)
+                result = search_words(data, substring, search_type, match_type, language)
                 num_results = len(result)
                 if result.empty:
                     st.warning(get_text("no_results", language))
