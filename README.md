@@ -4,8 +4,14 @@ The app can be found here: [Míreadóir](https://mireadoir.ie)
 I hacked it in a little over a day, added a bunch of stuff as needed over a month or so when I had time, and then had a lot of refactoring to do. I'm still working on tidying up main.py. Fixing the sorting and normalising sped it up substantially. 
 
 ### TODO:
-- the file interleaves functions and other code, making it hard to understand the structure -> moving all non-function code to a if __name__ == "__main__": block at the bottom.
+
 - extract the long literals in get_text into constants (or maybe a helper module). Typically a lot of this html formatting work would be done via templates (e.g. jinja)
+
+- add advanced search option (Regex)
+
+- add feedback form
+
+- consider migrating instructions to sidebar 
 
 ### I have a research license with Foras Na Gaeilge. Please contact them if you would like permission to use data from Teangleann. 
 

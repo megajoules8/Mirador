@@ -95,34 +95,6 @@ def get_text(key: str, language: str) -> str:
     }
     return texts[key][language]
 
-# Streamlit UI
-logo = "mireadoir.png"  # Update with the path to your logo
-
-# Sidebar with logo and language selection
-with st.sidebar:
-    st.image(logo, width=250)
-    language = st.selectbox("Roghnaigh teanga / Select Language:", ['GA', 'EN'], index=0)
-
-# App title
-st.title(get_text("title", language))
-
-# Input fields
-substring = st.text_input(get_text("enter_substring", language))
-search_type = st.selectbox(get_text("search_type", language), [
-    get_text("begins_with", language),
-    get_text("ends_with", language),
-    get_text("contains", language)
-])
-
-# Toggle for match type
-match_type = st.radio(get_text("match_type", language), [
-    get_text("partial_match", language),
-    get_text("exact_match", language)
-])
-
-# Load data
-data = load_data("teanglann_words.csv")
-
 def search_words(data: pd.DataFrame, substring: str, search_type: str, match_type: str) -> pd.DataFrame:
     """
     Search for words in the DataFrame based on the given substring, search type, and match type.
@@ -161,26 +133,57 @@ def df_to_clickable_html(df: pd.DataFrame) -> str:
     df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
-# Columns for search and reset buttons
-col1, col2, col3 = st.columns([3, 3, 1])
-with col1:
-    if st.button(get_text("search", language)):
-        # Validate the substring
-        if not substring or not re.match(r'^[a-zA-ZÀ-ÿ\s\-]+$', substring.strip()):
-            st.error(get_text("invalid_search", language))
-        else:
-            result = search_words(data, substring, search_type, match_type)
-            num_results = len(result)
-            if result.empty:
-                st.warning(get_text("no_results", language))
+
+if __name__ == "__main__":
+
+    # Streamlit UI
+    logo = "mireadoir.png"  # Update with the path to your logo
+
+    # Sidebar with logo and language selection
+    with st.sidebar:
+        st.image(logo, width=250)
+        language = st.selectbox("Roghnaigh teanga / Select Language:", ['GA', 'EN'], index=0)
+
+    # App title
+    st.title(get_text("title", language))
+
+    # Input fields
+    substring = st.text_input(get_text("enter_substring", language))
+    search_type = st.selectbox(get_text("search_type", language), [
+        get_text("begins_with", language),
+        get_text("ends_with", language),
+        get_text("contains", language)
+    ])
+
+    # Toggle for match type
+    match_type = st.radio(get_text("match_type", language), [
+        get_text("partial_match", language),
+        get_text("exact_match", language)
+    ])
+
+    # Load data
+    data = load_data("teanglann_words.csv")
+
+    # Columns for search and reset buttons
+    col1, col2, col3 = st.columns([3, 3, 1])
+    with col1:
+        if st.button(get_text("search", language)):
+            # Validate the substring
+            if not substring or not re.match(r'^[a-zA-ZÀ-ÿ\s\-]+$', substring.strip()):
+                st.error(get_text("invalid_search", language))
             else:
-                st.write(f"{get_text('results_count', language)} {num_results}")
-                st.write(df_to_clickable_html(result), unsafe_allow_html=True)
+                result = search_words(data, substring, search_type, match_type)
+                num_results = len(result)
+                if result.empty:
+                    st.warning(get_text("no_results", language))
+                else:
+                    st.write(f"{get_text('results_count', language)} {num_results}")
+                    st.write(df_to_clickable_html(result), unsafe_allow_html=True)
 
-with col3:
-    if st.button(get_text("reset", language)):
-        st.rerun()
+    with col3:
+        if st.button(get_text("reset", language)):
+            st.rerun()
 
-# Footer
-footer_text = get_text('footer', language).replace('\n', '<br>')
-st.markdown(f"<footer style='text-align: left; padding: 10px 0;'>{footer_text}</footer>", unsafe_allow_html=True)
+    # Footer
+    footer_text = get_text('footer', language).replace('\n', '<br>')
+    st.markdown(f"<footer style='text-align: left; padding: 10px 0;'>{footer_text}</footer>", unsafe_allow_html=True)
