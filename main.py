@@ -53,6 +53,7 @@ def get_text(key: str, language: str) -> str:
         "begins_with": {"en": "Begins with", "ga": "A thosaíonn le"},
         "ends_with": {"en": "Ends with", "ga": "A chríochnaíonn le"},
         "contains": {"en": "Contains", "ga": "Áit ar bith"},
+        "regex": {"en": "Regex", "ga": "Regex"},
         "search": {"en": "Search", "ga": "Cuardaigh"},
         "reset": {"en": "Reset", "ga": "Bánaigh"},
         "no_results": {"en": "No results found.", "ga": "Níor aimsíodh aon toradh."},
@@ -102,19 +103,27 @@ def search_words(data: pd.DataFrame, substring: str, search_type: str, match_typ
     Args:
         data (pd.DataFrame): The DataFrame containing the words to search.
         substring (str): The substring to search for.
-        search_type (str): The type of search ('begins_with', 'ends_with', 'contains').
+        search_type (str): The type of search ('begins_with', 'ends_with', 'contains', 'regex').
         match_type (str): The type of match ('partial_match', 'exact_match').
+        language (str): The language code (e.g., 'en' or 'ga').
 
     Returns:
         pd.DataFrame: The filtered DataFrame with the search results.
     """
     normalized_substring = normalize_string(substring) if match_type == get_text("partial_match", language) else substring
+
     if search_type == get_text("begins_with", language):
         filtered_data = data[data['NormalizedWord'].str.startswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.startswith(substring)]
     elif search_type == get_text("ends_with", language):
         filtered_data = data[data['NormalizedWord'].str.endswith(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.endswith(substring)]
     elif search_type == get_text("contains", language):
-        filtered_data = data[data['NormalizedWord'].str.contains(normalized_substring) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring)]
+        filtered_data = data[data['NormalizedWord'].str.contains(normalized_substring, na=False) if match_type == get_text("partial_match", language) else data['Word'].str.contains(substring, na=False)]
+    elif search_type == get_text("regex", language):
+        try:
+            filtered_data = data[data['Word'].str.contains(substring, regex=True, na=False)]
+        except re.error:
+            st.error("Invalid regular expression.")
+            return pd.DataFrame(columns=['Word', 'Link'])
     else:
         filtered_data = pd.DataFrame(columns=['Word', 'Link'])
 
@@ -133,11 +142,10 @@ def df_to_clickable_html(df: pd.DataFrame) -> str:
     df['Link'] = df.apply(lambda row: f'<a href="{row["Link"]}" target="_blank">{row["Link"]}</a>', axis=1)
     return df[['Word', 'Link']].to_html(escape=False, index=False)
 
-
 if __name__ == "__main__":
 
     # Streamlit UI
-    logo = "mireadoir.png"  # Update with the path to your logo
+    logo = "mireadoir.png"
 
     # Sidebar with logo and language selection
     with st.sidebar:
@@ -152,7 +160,8 @@ if __name__ == "__main__":
     search_type = st.selectbox(get_text("search_type", language), [
         get_text("begins_with", language),
         get_text("ends_with", language),
-        get_text("contains", language)
+        get_text("contains", language),
+        get_text("regex", language)
     ])
 
     # Toggle for match type
@@ -168,21 +177,23 @@ if __name__ == "__main__":
     col1, col2, col3 = st.columns([3, 3, 1])
     with col1:
         if st.button(get_text("search", language)):
-            # Validate the substring
-            if not substring or not re.match(r'^[a-zA-ZÀ-ÿ\s\-]+$', substring.strip()):
+            if not substring.strip():
                 st.error(get_text("invalid_search", language))
             else:
-                result = search_words(data, substring, search_type, match_type, language)
-                num_results = len(result)
-                if result.empty:
-                    st.warning(get_text("no_results", language))
-                else:
-                    st.write(f"{get_text('results_count', language)} {num_results}")
-                    st.write(df_to_clickable_html(result), unsafe_allow_html=True)
+                try:
+                    result = search_words(data, substring, search_type, match_type, language)
+                    num_results = len(result)
+                    if result.empty:
+                        st.warning(get_text("no_results", language))
+                    else:
+                        st.write(f"{get_text('results_count', language)} {num_results}")
+                        st.write(df_to_clickable_html(result), unsafe_allow_html=True)
+                except re.error:
+                    st.error("Invalid regular expression. Please check your input.")
 
     with col3:
         if st.button(get_text("reset", language)):
-            st.rerun()
+            st.experimental_rerun()
 
     # Footer
     footer_text = get_text('footer', language).replace('\n', '<br>')
