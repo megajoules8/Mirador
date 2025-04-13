@@ -19,7 +19,7 @@ Míreadóir enables users to search Irish words by substring.
 In its current state, it has been used as:
 - a rhyming dictionary
 - to check certain spelling conventions
-- to put in parts of a word heard to find the full word they were unfamiliar with
+- to put in parts of a word heard to find the full word users were unfamiliar with
   
 Future iterations are planned to actually reccord common rhymes by dialect so users don't have to use regex. 
 Rhyme does change substantially by dialect and is interesting to look at in regards to interligual translation of sean-nós songs, for instance. 
