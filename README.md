@@ -25,14 +25,15 @@ Future iterations are planned to actually reccord common rhymes by dialect so us
 Rhyme does change substantially by dialect and is interesting to look at in regards to interligual translation of sean-nós songs, for instance. 
 As an example, in the Ulster dialect, words ending with ú, odh, or adh usually rhyme. 
 It's important to note that Kevin Scannell released a lovely rhyming dictionary (in the form of a PDF) back in December of 2019 but I noticed 
-it didn't have rhymes that fit with the dialect I am familiar with so I wanted to make a digital resource. 
+it didn't have rhymes that fit with the dialect I am familiar with so I wanted to make a more flexible digital resource. 
 
 I am currently looking into the SpaCy comunity plug-in for syllable segmentation as well. I beleive he also has a lot of the word done as far as hyphenation goes, but
 once again, it would likely need to be replicated by dialect. Anyone interested in collaborating on a project like this with me should feel free to reach out. 
+It might make for an interesting citizen science project. In my free time, I've been gathering songs from different regions and analysing rhyming patterns that way. I've learnt a lot about the sounds of Irish through this lense, finding the differences both surprising and delightful. 
 
 Current work is also aimed at segmenting words into their "morphemes" (see below) so that it can enable users to look up words by root meanings. 
 I am exploring both machine learning and rule based approaches towards this goal. At the moment, I have over 5,000 words tagged with their know prefix and/or suffix.
-Feel free to reach out if you want this data/code. It's very much a work-in-progress.
+Feel free to reach out if you want this data/code. It's very much a work-in-progress. 
 
 "Morphemes" are the smallest parts of words that contain meaning on their own. There is inflectional and derivational morphology. 
 Inflectional morphology has to do with changes to words that arrise from grammar. This project isn't really focused on that.
