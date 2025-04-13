@@ -26,6 +26,7 @@ Rhyme does change substantially by dialect and is interesting to look at in rega
 As an example, in the Ulster dialect, words ending with ú, odh, or adh usually rhyme. 
 It's important to note that Kevin Scannell released a lovely rhyming dictionary (in the form of a PDF) back in December of 2019 but I noticed 
 it didn't have rhymes that fit with the dialect I am familiar with so I wanted to make a digital resource. 
+
 I am currently looking into the SpaCy comunity plug-in for syllable segmentation as well. I beleive he also has a lot of the word done as far as hyphenation goes, but
 once again, it would likely need to be replicated by dialect. Anyone interested in collaborating on a project like this with me should feel free to reach out. 
 
@@ -50,6 +51,7 @@ Examples:
 Benefits of this could include potentially aiding "sense-by-sense" translation not just from Irish to English or vice versus, but also for interlingual translation (between the dialects). It could also be used as a teaching aid to help students learn to break down words and guess at the meaning of words they haven't seen before. 
 There is a fair amount of evidence that morpheme segmentation or sub-word tokenisation that captures morphological features can aid in NLP tasks for "morphologically rich" 
 languages such as Irish, Russian, Hungarian, etc... 
+
 Similar to how it may help students figure out words, it seems that sub-word tokenisation can help translate "out of dictionary" terms.
 (for my sources please see the bibliography of mine and Ellen's paper). 
 
