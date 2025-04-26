@@ -152,6 +152,25 @@ if __name__ == "__main__":
         st.image(logo, width=250)
         language = st.selectbox("Roghnaigh teanga / Select Language:", ['GA', 'EN'], index=0)
 
+        # Add a clickable link in the sidebar
+        cheatsheet_urls = {
+            "en": "https://clubanfhainne.wixsite.com/clubanfhainne/en/post/how-to-use-m%C3%ADreadoir-as-a-rhyming-dictionary",  # Replace with the actual English cheatsheet URL
+            "ga": "https://clubanfhainne.wixsite.com/clubanfhainne/post/conas-m%C3%ADread%C3%B3ir-a-%C3%BAs%C3%A1id-mar-fhocl%C3%B3ir-r%C3%ADme"   # Replace with the actual Irish cheatsheet URL
+        }
+
+        cheatsheet_text = {
+            "en": "How to use Míreadóir as a Rhyming Dictionary",
+            "ga": "Conas Míreadóir a úsáid mar Fhoclóir Ríme"
+        }
+
+        st.markdown(f"""
+            <p style="text-align: left;">
+                <a href="{cheatsheet_urls[language.lower()]}" target="_blank" style="text-decoration: none; color: #007BFF;">
+                    {cheatsheet_text[language.lower()]}
+                </a>
+            </p>
+        """, unsafe_allow_html=True)
+
     # App title
     st.title(get_text("title", language))
 
@@ -187,7 +206,23 @@ if __name__ == "__main__":
                         st.warning(get_text("no_results", language))
                     else:
                         st.write(f"{get_text('results_count', language)} {num_results}")
+                        
+                        # Add a download button for the results
+                        csv = result.to_csv(index=False)
+                        download_label = {
+                            "en": "Download Results as CSV",
+                            "ga": "Íoslódáil Torthaí mar CSV" #check this translation
+                        }
+                        st.download_button(
+                            label=download_label[language.lower()],
+                            data=csv,
+                            file_name="search_results.csv",
+                            mime="text/csv"
+                        )
+                        
                         st.write(df_to_clickable_html(result), unsafe_allow_html=True)
+
+                        
                 except re.error:
                     st.error("Invalid regular expression. Please check your input.")
 
