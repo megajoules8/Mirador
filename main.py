@@ -66,7 +66,7 @@ def get_text(key: str, language: str) -> str:
             "en": """Type any part of a word you would like results for and then select if you would like results to "begin with", "contain", or "end with" those letters.<br>
             Note: Partial matches with and without sínte fada are included in the partial match results.<br><br> 
             <b>Creators</b><br>
-            <u>Mykalin Jones</u>: Development<br>
+            <u>Mykalin Jones</u>: App Development and Concept<br>
             <u>Ellen Corbett</u>: Translation and Concept<br><br>
             <b>Míreadóir</b><br>
             <i>Míreadóir</i> [Mir-a-door] aims to enable users to search for specific Irish-language morphemes including suffixes, prefixes, and other affixes. Currently it allows users to search by substring (parts of words).<br>
@@ -81,7 +81,7 @@ def get_text(key: str, language: str) -> str:
             nó a bhfuil le feiceáil in “áit ar bith” san fhocal.<br>
             Nóta: Cuirtear meaitseanna páirteacha le agus gan shínte fada san áireamh i dtórthaí meaits páirteach<br><br>
             <b>Na Cruthaitheoirí</b><br>
-            <u>Mykalin Jones</u> a d'fhobairt<br>
+            <u>Mykalin Jones</u> a d'fhobairt agus a smaoinigh ar an choincheap<br>
             <u>Ellen Corbett</u> a d'aistrigh agus a smaoinigh ar an choincheap<br><br>
             <b>Míreadóir</b><br>
             Uasdátú: Is é mar sprioc ag Míreadóir go mbeidh úsáideoirí ábalta cuardach a dhéanamh ar mhoirféim ar leith, iarmhíreanna, réimíreanna, agus táthmhíreanna eile san áireamh. Ag an bhomaite, ligeann Míreadóir d’úsáideoirí fotheaghráin [‘substrings’] a chuardach.<br>
