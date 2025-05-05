@@ -32,7 +32,7 @@ once again, it would likely need to be replicated by dialect. Anyone interested 
 It might make for an interesting citizen science project. In my free time, I've been gathering songs from different regions and analysing rhyming patterns that way. I've learnt a lot about the sounds of Irish through this lense, finding the differences both surprising and delightful. 
 
 Current work is also aimed at segmenting words into their "morphemes" (see below) so that it can enable users to look up words by root meanings. 
-I am exploring both machine learning and rule based approaches towards this goal. At the moment, I have over 5,000 words tagged with their know prefix and/or suffix.
+I am exploring both machine learning and rule based approaches towards this goal. At the moment, I have over 5,000 words tagged with their known prefix and/or suffix.
 Feel free to reach out if you want this data/code. It's very much a work-in-progress. 
 
 "Morphemes" are the smallest parts of words that contain meaning on their own. There is inflectional and derivational morphology. 
@@ -54,5 +54,5 @@ Benefits of this could include potentially aiding "sense-by-sense" translation n
 There is a fair amount of evidence that morpheme segmentation or sub-word tokenisation that captures morphological features can aid in NLP tasks for "morphologically rich" 
 languages such as Irish, Russian, Hungarian, etc... 
 Similar to how it may help students figure out words, it seems that sub-word tokenisation can help translate "out of dictionary" terms.
-(for my sources please see the bibliography of mine and Ellen's paper). 
+(For my sources please see the bibliography of mine and Ellen's [paper](https://leannteangaanreiviu.com/content/taking-the-deoir-out-of-taighdeoir-ag-cruthu-chuardaitheoir-fotheaghrain-agus-moirfeimi-don-ghaeilge/)). 
 
