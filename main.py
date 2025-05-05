@@ -88,7 +88,7 @@ def get_text(key: str, language: str) -> str:
             Is féidir le moirféim díochlaonadh, inscne, tuiseal, agus uimhir a chur in iúl. É sin ráite, níl an ábaltacht moirféim ar leith a chuardach ar fáil ar acmhainn ar bith eile ar líne, áfach, cé gur mó an tairbhe.<br>
             Le <i>mirador</i> na Spáinne mar inspioráid, tá súil againn go dtabharfaidh an acmhainn seo stáitse nua as a bheith ag amharc ar mhíreanna éagsúla na Gaeilge. Tá suil againn go mbeidh Míreadóir úsáideach d’fhoghlaimeoirí agus do mhúinteoirí na Gaeilge, chomh maith le haistritheoirí, scríbhneoirí, agus gairmithe eile a n-úsáideann an teanga.<br><br>
             <b>Fúinn</b><br>
-            Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í Mykalin Jones/Mícheáilín Nic Sheoin. Tá a croí istigh sa Ghaeilge. <br>
+            Is eolaí sonraí, scríbhneoir curaclaim, agus teagascóir í <a href="https://linktr.ee/Mykalin">Mykalin Jones/Mícheáilín Nic Sheoin</a>. Tá a croí istigh sa Ghaeilge. <br>
             Is taighdeoir PhD agus aistritheoir í <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a>. Is annamh lá nach mbíonn sí ag amharc ar fhoclóir Gaeilge.<br><br>
             """
         },
