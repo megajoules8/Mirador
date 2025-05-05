@@ -73,7 +73,7 @@ def get_text(key: str, language: str) -> str:
             Morphemes can denote declension, gender, case, and number. However, the ability to search for specific morphemes is not currently available through other online resources, despite its usefulness.<br>
             Taking inspiration from the Spanish <i>mirador</i>, we hope that this resource will provide a new vantage point from which to view Irish <i>mír</i>. We hope that Míreadóir will be useful to Irish-language learners and teachers, translators, writers, language professionals, or anyone interested in the language.<br><br>
             <b>About Us</b><br>
-            Mykalin Jones/Mícheáilín Nic Sheoin (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br>
+            <a href="https://linktr.ee/Mykalin">Mykalin Jones/Mícheáilín Nic Sheoin</a> (she/her) is a data scientist, curriculum writer, instructor, and passionate learner of the Irish language. <br>
             <a href="https://linktr.ee/ellencorbett">Ellen Corbett</a> (she/her) is a PhD researcher, translator, and frequent user of Irish dictionaries.<br><br>
             """,
             "ga": """Cuir isteach an mhoirféim nó an fotheaghrán a bhfuil tú ag iarraidh a chuardach. Roghnaigh ar 
